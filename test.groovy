@@ -1,5 +1,5 @@
 job('job1') {
-    description('For pulling the github repo')
+    description('For pulling the github rep')
     authenticationToken('ajay123')
     scm {
         git {
