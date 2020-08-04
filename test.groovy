@@ -1,5 +1,5 @@
 job('job1') {
-    description('For pulling the github repo and pushing image to dokerhub')
+    description('For pulling the github repo')
     authenticationToken('ajay123')
     scm {
         git {
