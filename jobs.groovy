@@ -10,7 +10,7 @@ job('job1') {
         }
     }
     steps{
-        shell('mkdir /root/task5 ; cp -rf * /root/task6')
+        shell('mkdir /root/task6 ; cp -rf * /root/task6/')
         dockerBuilderPublisher {
             dockerFileDirectory('/root/task6/')
             cloud('Cloud to use to build image')
