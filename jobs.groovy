@@ -13,10 +13,10 @@ job('job1') {
         shell('mkdir /root/task6 ; cp -rf * /root/task6/')
         dockerBuilderPublisher {
             dockerFileDirectory('/root/task6/')
-            cloud('Cloud to use to build image')
+            cloud('')
             fromRegistry {
-                credentialsId('none')
-                url('https://index.docker.io/v1/')
+                credentialsId('')
+                url('')
             }
             pushOnSuccess(false)
             cleanImages(false)
