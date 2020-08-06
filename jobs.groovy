@@ -9,14 +9,17 @@ job('job1') {
             branch('*/' + 'master')
         }
     }
+    triggers {
+        upstream('seed_job', 'SUCCESS')
+    }
     steps{
         shell('mkdir /root/task6 ; cp -rf * /root/task6/')
         dockerBuilderPublisher {
             dockerFileDirectory('/root/task6/')
             cloud('Cloud to use to build image')
             fromRegistry {
-                credentialsId('cca7bb5b-f071-41ea-835e-c2e4f99bef08')
-                url('https://hub.docker.com/')
+                credentialsId('none')
+                url('https://index.docker.io/v1/')
             }
             pushOnSuccess(false)
             cleanImages(false)
@@ -43,7 +46,7 @@ job('job2') {
     }
     steps {
         shell('''mkdir /root/task6 ; cp -rf * /root/task6/ 
-            if ls /root/task5 | grep *.html 
+            if ls /root/task6 | grep *.html 
             then
             echo "Webpage type is HTML"
             name=$(kubectl get deployment --selector=type=html --output=jsonpath={.items..metadata.name})
