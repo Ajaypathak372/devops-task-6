@@ -9,9 +9,6 @@ job('job1') {
             branch('*/' + 'master')
         }
     }
-    triggers {
-        upstream('seed_job', 'SUCCESS')
-    }
     steps{
         shell('mkdir /root/task6 ; cp -rf * /root/task6/')
         dockerBuilderPublisher {
@@ -96,5 +93,7 @@ buildPipelineView('Task6_view') {
 }
 
 if (!jenkins.model.Jenkins.instance.getItemByFullName('job1')) {
+    queue('job1')
+} else {
     queue('job1')
 }
