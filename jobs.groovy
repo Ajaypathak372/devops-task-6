@@ -56,9 +56,7 @@ job('job2') {
             else "Webpage type is not html"
             fi
 
-            kubectl set image deployment --selector=type=html *=html-update:1.0 --record
-
-            kubectl scale --replicas=3 deployment --selector=type=html''')
+            ''')
     }
 }
 
@@ -92,8 +90,4 @@ buildPipelineView('Task6_view') {
     refreshFrequency(3)
 }
 
-if (!jenkins.model.Jenkins.instance.getItemByFullName('job1')) {
     queue('job1')
-} else {
-    queue('job1')
-}
