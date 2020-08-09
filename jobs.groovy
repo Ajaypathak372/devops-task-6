@@ -18,11 +18,11 @@ job('job1') {
                 credentialsId('')
                 url('')
             }
-            pushOnSuccess(false)
+            pushOnSuccess(true)
             cleanImages(false)
             cleanupWithJenkinsJobDelete(false)
             pushCredentialsId('cca7bb5b-f071-41ea-835e-c2e4f99bef08')
-            tagsString('html-update:1.0')
+            tagsString('ajay372/html-update')
         }    
     }
 }
@@ -56,7 +56,9 @@ job('job2') {
             else "Webpage type is not html"
             fi
 
-            ''')
+            kubectl set image deployment --selector=type=html *=html-update:1.0 --record
+
+            kubectl scale --replicas=3 deployment --selector=type=html''')
     }
 }
 
